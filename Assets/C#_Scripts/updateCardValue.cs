@@ -34,7 +34,7 @@ public class updateCardValue : MonoBehaviour
         selectable = GetComponent<Selectable>();
     }
 
-    // Update is called once per frame
+   // Update is called once per frame
     void Update()
     {
       if (selectable.faceUp == true)
