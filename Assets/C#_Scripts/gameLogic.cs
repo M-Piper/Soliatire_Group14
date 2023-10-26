@@ -101,7 +101,7 @@ public class gameLogic : MonoBehaviour
             newCard.name= card;
 
             //temporarily testing display of cards all face up
-            //newCard.GetComponent<Selectable>().faceUp = true;
+            newCard.GetComponent<Selectable>().faceUp = true;
 
             //adjusting offset so that the fan function continues for each card as the loop continues
             yOffset = yOffset + 0.3f;
