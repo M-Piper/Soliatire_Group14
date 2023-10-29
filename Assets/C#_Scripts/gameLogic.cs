@@ -54,7 +54,7 @@ public class gameLogic : MonoBehaviour
         //above is just for testing purposes
 
         SolitaireSort();
-        dealDeck();
+        StartCoroutine(dealDeck());
 
     }
 
@@ -102,7 +102,8 @@ public class gameLogic : MonoBehaviour
     }
 
     //first attempt at deal - will display full deck in one line for now
-    void dealDeck()
+    IEnumerator dealDeck()
+        
     {
         //this loop creates an integer so that values can be displayed correctly in each of the 7 'bottom tab' or Tableau locations
         for (int i = 0; i < 7; i++)
@@ -115,13 +116,23 @@ public class gameLogic : MonoBehaviour
             //in sprint 1 this looped through the whole deck and displayed it all in one long column (for testing) by looping through 'full deck'
             foreach (string card in bottoms[i])
             {
+                yield return new WaitForSeconds(0.01f);
+
                 //bottomTab[i] identifies each of the 7 bottom positions
                 //offset variable indicate offsetting so that cards appear fanned out (rather than stacked so you only see the top card)
                 GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomTab[i].transform.position.x, bottomTab[i].transform.position.y - yOffset, bottomTab[i].transform.position.z - zOffset), Quaternion.identity, bottomTab[i].transform);
                 newCard.name = card;
 
-                //temporarily testing display of cards all face up
-                newCard.GetComponent<Selectable>().faceUp = true;
+                //loop to identify the LAST card in each array of cards for all 7 piles in the tableau - only the last card should be face up
+                if (card == bottoms[i][bottoms[i].Count - 1])
+                {
+                    //display cards set to 'face up'
+                    newCard.GetComponent<Selectable>().faceUp = true;
+
+                }
+
+
+                
 
                 //adjusting offset so that the fan function continues for each card as the loop continues
                 yOffset = yOffset + 0.3f;
@@ -143,7 +154,7 @@ public class gameLogic : MonoBehaviour
             for (int j = i; j < 7; j++)
             {
                 bottoms[j].Add(fulldeck.Last<string>());
-                createDeck().RemoveAt(fulldeck.Count - 1);
+                fulldeck.RemoveAt(fulldeck.Count - 1);
             }
         }
     }
