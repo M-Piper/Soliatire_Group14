@@ -14,10 +14,10 @@ public class FactPopUp : MonoBehaviour
 
         // Get a reference to the button component and add a click event listener
         Button button = GetComponent<Button>();
-        button.onClick.AddListener(OnClick);
+        button.onClick.AddListener(ShowPopUp);
     }
 
-    private void OnClick()
+    private void ShowPopUp()
     {
         // Toggle the visibility of the popup panel
         popupPanel.SetActive(!popupPanel.activeSelf);
