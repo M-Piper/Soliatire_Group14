@@ -182,7 +182,7 @@ public class gameLogic : MonoBehaviour
         trips = fulldeck.Count / 3;
         tripsRemainder = fulldeck.Count % 3;
         deckTrips.Clear();
-
+        //test
         int modifier = 0;
         for (int i = 0; i < trips; i++)
         {
