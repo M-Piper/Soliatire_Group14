@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class playerInput : MonoBehaviour
 {
+    private gameLogic gamelogic;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        gamelogic = FindObjectOfType<gameLogic>();
+
     }
 
     // Update is called once per frame
@@ -48,6 +52,7 @@ public class playerInput : MonoBehaviour
     void Deck()
     {
         print("clicked on Deck");
+        gamelogic.DealFromDeck();
     }
     void Card()
     {
