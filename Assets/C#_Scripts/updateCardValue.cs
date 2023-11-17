@@ -11,11 +11,13 @@ public class updateCardValue : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Selectable selectable;
     private gameLogic gamelogic;
+    private playerInput userInput;
 
     void Start()
     {
         List<string> deck = gameLogic.createDeck();
         gamelogic = FindObjectOfType<gameLogic>();
+        userInput = FindObjectOfType<playerInput>();
 
         int i = 0;
         foreach (string card in deck)
@@ -45,6 +47,18 @@ public class updateCardValue : MonoBehaviour
       {
             spriteRenderer.sprite = cardBack;
       }
+
+      if (userInput.slot1)
+      {
+          if (name == userInput.slot1.name)
+          {
+              spriteRenderer.color = Color.yellow;
+          }
+          else
+          {
+              spriteRenderer.color = Color.white;
+          }
+        }
     }
 }
 

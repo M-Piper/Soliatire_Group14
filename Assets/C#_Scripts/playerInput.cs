@@ -5,13 +5,13 @@ using UnityEngine;
 public class playerInput : MonoBehaviour
 {
     private gameLogic gamelogic;
-
+    public GameObject slot1;
     // Start is called before the first frame update
     void Start()
     {
 
         gamelogic = FindObjectOfType<gameLogic>();
-
+        slot1 = this.gameObject; //to prevent slot1 being null
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class playerInput : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("Card"))
                 {
-                    Card();
+                    Card(hit.collider.gameObject);
                 }
                 else if (hit.collider.CompareTag("Foundation"))
                 {
@@ -44,6 +44,7 @@ public class playerInput : MonoBehaviour
                 else if (hit.collider.CompareTag("Tableau"))
                 {
                     Tableau();
+
                 }
             }
         }
@@ -54,9 +55,23 @@ public class playerInput : MonoBehaviour
         print("clicked on Deck");
         gamelogic.DealFromDeck();
     }
-    void Card()
+    void Card(GameObject selected)
     {
         print("clicked on Card");
+        slot1 = selected;
+        //if card facedown and useable, flip
+
+        //if card is in deck pile with trips and not blocked, select it
+
+        if (slot1 = this.gameObject) //this prevents slot1 being null
+        {
+            slot1 = selected; 
+        }
+
+        //if there is already a card selected and second card clicked is different
+        //AND if the second card is opposite suit and higher, then stack
+        //else new card selected
+        //else if the card is the same and time between clicks was X - send it to foundation
     }
     void Foundation()
     {
