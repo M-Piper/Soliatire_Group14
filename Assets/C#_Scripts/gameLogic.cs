@@ -211,7 +211,6 @@ public class gameLogic : MonoBehaviour
     //this method deals using the triplets created from the full deck
     public void DealFromDeck()
     {
-        print(trips);
         //loop to add remaining cards to discard pile
         foreach (Transform child in deckButton.transform)
         {
