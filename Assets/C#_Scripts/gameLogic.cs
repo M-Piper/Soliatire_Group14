@@ -10,6 +10,7 @@ public class gameLogic : MonoBehaviour
 {
     public Sprite[] theCardImages;
     public GameObject cardPrefab;
+    public GameObject deckButton;
     public GameObject[] bottomTab;
     public GameObject[] topTab;
 
@@ -17,6 +18,9 @@ public class gameLogic : MonoBehaviour
     public static string[] suitValues = new string[] { "ace_of_", "2_of_", "3_of_", "4_of_", "5_of_", "6_of_", "7_of_", "8_of_", "9_of_", "10_of_", "jack_of_", "queen_of_", "king_of_"};
     public List<string>[] bottoms;
     public List<string>[] tops;
+
+    public List<string> tripsOnDisplay = new List<string>();    
+    public List<List<string>> deckTrips = new List<List<string>>();
 
     private List<string> bottom0 = new List<string>();
     private List<string> bottom1 = new List<string>();
@@ -27,6 +31,10 @@ public class gameLogic : MonoBehaviour
     private List<string> bottom6 = new List<string>();
 
     public List<string> fulldeck;
+    public List<string> discardPile = new List<string>();
+    private int deckLocation;
+    private int trips;
+    private int tripsRemainder;
 
     void Start()
     {   //instantiate a list of strings for each of the tableau's 7 spots)
@@ -49,13 +57,12 @@ public class gameLogic : MonoBehaviour
         foreach (string card in fulldeck)
         {
             print(card);
-
         }
         //above is just for testing purposes
 
         SolitaireSort();
         StartCoroutine(dealDeck());
-
+        SortDeckIntoTrips();
     }
 
     public static List<string> createDeck()
@@ -122,7 +129,7 @@ public class gameLogic : MonoBehaviour
                 //offset variable indicate offsetting so that cards appear fanned out (rather than stacked so you only see the top card)
                 GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomTab[i].transform.position.x, bottomTab[i].transform.position.y - yOffset, bottomTab[i].transform.position.z - zOffset), Quaternion.identity, bottomTab[i].transform);
                 newCard.name = card;
-
+                newCard.tag = "Card";
                 //loop to identify the LAST card in each array of cards for all 7 piles in the tableau - only the last card should be face up
                 if (card == bottoms[i][bottoms[i].Count - 1])
                 {
@@ -137,8 +144,18 @@ public class gameLogic : MonoBehaviour
                 //adjusting offset so that the fan function continues for each card as the loop continues
                 yOffset = yOffset + 0.3f;
                 zOffset = zOffset + 0.03f;
+                discardPile.Add(card);
             }
         }
+
+        foreach (string card in discardPile)
+        {
+            if (fulldeck.Contains(card))
+            {
+                fulldeck.Remove(card);
+            }
+        }
+        discardPile.Clear();
     }
 
     //nested loops walk through the shuffled deck and sort them into each of the 7 tableau spots ('bottom position' variables)
@@ -157,5 +174,99 @@ public class gameLogic : MonoBehaviour
                 fulldeck.RemoveAt(fulldeck.Count - 1);
             }
         }
+    }
+
+    public void SortDeckIntoTrips()
+    {
+        trips = fulldeck.Count / 3;
+        tripsRemainder = fulldeck.Count % 3;
+        deckTrips.Clear();
+        
+        int modifier = 0;
+        for (int i = 0; i < trips; i++)
+        {
+            List<string> myTrips = new List<string>();
+            for (int j = 0; j < 3; j++)
+            {
+                myTrips.Add(fulldeck[j + modifier]);
+            }
+            deckTrips.Add(myTrips);
+            modifier = modifier + 3;
+        }
+        if (tripsRemainder != 0)
+        {
+            List<string> myRemainders = new List<string>();
+            modifier = 0;
+                for (int k = 0; k < tripsRemainder; k++)
+            {
+                myRemainders.Add(fulldeck[fulldeck.Count - tripsRemainder + modifier]);
+                modifier++;
+            }
+            deckTrips.Add(myRemainders);
+            trips++;
+        }
+        deckLocation = 0;
+    }
+
+    //this method deals using the triplets created from the full deck
+    public void DealFromDeck()
+    {
+        print(trips);
+        //loop to add remaining cards to discard pile
+        foreach (Transform child in deckButton.transform)
+        {
+            if (child.CompareTag("Card"))
+            {
+                fulldeck.Remove(child.name);
+                discardPile.Add(child.name);
+                Destroy(child.gameObject);
+            }
+        }
+
+
+
+        if (deckLocation < trips)
+        {
+            // draw three cards from deck
+            tripsOnDisplay.Clear();
+            float xOffset = 2.5f;
+            float zOffset = -0.2f;
+
+            foreach (string card in deckTrips[deckLocation])
+            {
+                GameObject newTopCard = Instantiate(cardPrefab, new Vector3(deckButton.transform.position.x + xOffset, deckButton.transform.position.y, deckButton.transform.position.z + zOffset), Quaternion.identity, deckButton.transform);
+                
+                
+                xOffset = xOffset + 0.5f;
+                zOffset = zOffset - 0.2f;
+                
+                
+                newTopCard.name = card;
+                newTopCard.tag = "Card";
+
+                tripsOnDisplay.Add(card);
+                newTopCard.GetComponent<Selectable>().faceUp = true;
+                newTopCard.GetComponent<Selectable>().inDeckPile = true;
+            }
+
+            deckLocation++;
+
+        }
+        else
+        {
+            RestackTopDeck();
+
+        }
+    }
+
+    void RestackTopDeck()
+    {
+        fulldeck.Clear();
+        foreach (string card in discardPile)
+        {
+            fulldeck.Add(card);
+        }
+        discardPile.Clear();
+        SortDeckIntoTrips();
     }
 }
