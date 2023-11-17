@@ -57,7 +57,6 @@ public class gameLogic : MonoBehaviour
         foreach (string card in fulldeck)
         {
             print(card);
-
         }
         //above is just for testing purposes
 
@@ -130,7 +129,7 @@ public class gameLogic : MonoBehaviour
                 //offset variable indicate offsetting so that cards appear fanned out (rather than stacked so you only see the top card)
                 GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomTab[i].transform.position.x, bottomTab[i].transform.position.y - yOffset, bottomTab[i].transform.position.z - zOffset), Quaternion.identity, bottomTab[i].transform);
                 newCard.name = card;
-
+                newCard.tag = "Card";
                 //loop to identify the LAST card in each array of cards for all 7 piles in the tableau - only the last card should be face up
                 if (card == bottoms[i][bottoms[i].Count - 1])
                 {
@@ -182,7 +181,7 @@ public class gameLogic : MonoBehaviour
         trips = fulldeck.Count / 3;
         tripsRemainder = fulldeck.Count % 3;
         deckTrips.Clear();
-        //test
+        
         int modifier = 0;
         for (int i = 0; i < trips; i++)
         {
@@ -212,6 +211,7 @@ public class gameLogic : MonoBehaviour
     //this method deals using the triplets created from the full deck
     public void DealFromDeck()
     {
+        print(trips);
         //loop to add remaining cards to discard pile
         foreach (Transform child in deckButton.transform)
         {
@@ -235,12 +235,18 @@ public class gameLogic : MonoBehaviour
             foreach (string card in deckTrips[deckLocation])
             {
                 GameObject newTopCard = Instantiate(cardPrefab, new Vector3(deckButton.transform.position.x + xOffset, deckButton.transform.position.y, deckButton.transform.position.z + zOffset), Quaternion.identity, deckButton.transform);
+                
+                
                 xOffset = xOffset + 0.5f;
                 zOffset = zOffset - 0.2f;
+                
+                
                 newTopCard.name = card;
-                tripsOnDisplay.Add(card);
-                newTopCard.GetComponent<Selectable>().faceUp = true;    
+                newTopCard.tag = "Card";
 
+                tripsOnDisplay.Add(card);
+                newTopCard.GetComponent<Selectable>().faceUp = true;
+                newTopCard.GetComponent<Selectable>().inDeckPile = true;
             }
 
             deckLocation++;
@@ -255,6 +261,7 @@ public class gameLogic : MonoBehaviour
 
     void RestackTopDeck()
     {
+        fulldeck.Clear();
         foreach (string card in discardPile)
         {
             fulldeck.Add(card);

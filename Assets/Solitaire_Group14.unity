@@ -1205,7 +1205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: 180}
+  m_AnchoredPosition: {x: -475, y: 225}
   m_SizeDelta: {x: 55, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &883091473
@@ -1507,7 +1507,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 931a2def6ad31324f912b682020e6de2, type: 3}
   - {fileID: 21300000, guid: aa2bcfc5bd667464f8ac7702f9cb8dce, type: 3}
   - {fileID: 21300000, guid: 24aa0d42bc3370d42af52e8c82273e86, type: 3}
-  - {fileID: 21300000, guid: 26ac63a99e09fa149afd62cf0afa2cd7, type: 3}
+  - {fileID: 21300000, guid: 9737f0dfa67cc0b4a8d7143813c2bcca, type: 3}
   - {fileID: 21300000, guid: 7bb863a8c59c680439ee6b6d2c87ec14, type: 3}
   - {fileID: 21300000, guid: eaef9aa71d4a23f489f7527e94c0a8d0, type: 3}
   - {fileID: 21300000, guid: 66a3e4340b69f2d4bb21f9b53fa6484b, type: 3}
@@ -2954,7 +2954,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 956a2dd914cf26f47abcbd8e564f6935, type: 3}
     - target: {fileID: 8853911021742462216, guid: 03f14c8b861fdc847bb8f487d89acd00, type: 3}
       propertyPath: m_Name
-      value: createCard
+      value: Card
       objectReference: {fileID: 0}
     - target: {fileID: 8853911021742462216, guid: 03f14c8b861fdc847bb8f487d89acd00, type: 3}
       propertyPath: m_TagString

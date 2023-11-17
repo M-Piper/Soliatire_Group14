@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6550793566181892499}
   - component: {fileID: 4437383863428613456}
   m_Layer: 0
-  m_Name: createCard
+  m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,3 +113,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceUp: 0
+  inDeckPile: 0
