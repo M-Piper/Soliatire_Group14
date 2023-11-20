@@ -65,13 +65,19 @@ public class playerInput : MonoBehaviour
 
         if (slot1 = this.gameObject) //this prevents slot1 being null
         {
-            slot1 = selected; 
+            slot1 = selected;
         }
 
         //if there is already a card selected and second card clicked is different
-        //AND if the second card is opposite suit and higher, then stack
-        //else new card selected
+
+        else if (slot1 != selected)
+        {
+            //AND if the second card is opposite suit and higher, then stack
+        slot1=selected;
+        }
+            //else new card selected
         //else if the card is the same and time between clicks was X - send it to foundation
+    
     }
     void Foundation()
     {
@@ -80,5 +86,13 @@ public class playerInput : MonoBehaviour
     void Tableau()
     {
         print("clicked on Tableau");
+    }
+
+    bool Stackable(GameObject selected)
+    {
+        Selectable s1 = slot1.GetComponent<Selectable>();
+        Selectable s2 = selected.GetComponent<Selectable>();
+        //compare to see if eligible for stacking
+        return false;
     }
 }

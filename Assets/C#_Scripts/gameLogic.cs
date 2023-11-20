@@ -130,6 +130,7 @@ public class gameLogic : MonoBehaviour
                 GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomTab[i].transform.position.x, bottomTab[i].transform.position.y - yOffset, bottomTab[i].transform.position.z - zOffset), Quaternion.identity, bottomTab[i].transform);
                 newCard.name = card;
                 newCard.tag = "Card";
+                //newCard.GetComponent<Selectable>().row = i;
                 //loop to identify the LAST card in each array of cards for all 7 piles in the tableau - only the last card should be face up
                 if (card == bottoms[i][bottoms[i].Count - 1])
                 {
