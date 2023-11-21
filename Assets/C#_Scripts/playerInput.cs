@@ -6,12 +6,13 @@ public class playerInput : MonoBehaviour
 {
     private gameLogic gamelogic;
     public GameObject slot1;
+    public bool firstCardFlag;
     // Start is called before the first frame update
     void Start()
     {
-
         gamelogic = FindObjectOfType<gameLogic>();
         slot1 = this.gameObject; //to prevent slot1 being null
+        firstCardFlag = true;
     }
 
     // Update is called once per frame
@@ -58,31 +59,45 @@ public class playerInput : MonoBehaviour
     void Card(GameObject selected)
     {
         print("clicked on Card");
-        slot1 = selected;
+
         //if card facedown and useable, flip
 
         //if card is in deck pile with trips and not blocked, select it
 
-        if (slot1 = this.gameObject) //this prevents slot1 being null
-        {
-            slot1 = selected;
-        }
 
+        if (slot1 == gameObject) //this prevents slot1 being null
+        {
+            //if (firstCardFlag = true)
+            //{
+                slot1 = selected;
+              //  firstCardFlag = false;
+            //}
+        //}
+        //else
+        //{
+          //  firstCardFlag = false;
+        }
+        
         //if there is already a card selected and second card clicked is different
 
-        else if (slot1 != selected)
+        if (slot1 != selected)
         {
-            //AND if the second card is opposite suit and higher, then stack
-        slot1=selected;
-        }
+          
+            if (Stackable(selected))
+            {
+                //Stack it
+                slot1 = selected;
+            }
             //else new card selected
-        //else if the card is the same and time between clicks was X - send it to foundation
-    
+            //else if the card is the same and time between clicks was X - send it to foundation
+        }
+
     }
     void Foundation()
     {
         print("clicked on Foundation");
     }
+
     void Tableau()
     {
         print("clicked on Tableau");
@@ -93,6 +108,49 @@ public class playerInput : MonoBehaviour
         Selectable s1 = slot1.GetComponent<Selectable>();
         Selectable s2 = selected.GetComponent<Selectable>();
         //compare to see if eligible for stacking
+
+        if (s2.top == true) //if top pile must be stacked Ace to King in same suit
+        {
+            if (s1.suit == s2.suit || s1.value == 1 && s2.suit == null)
+            {
+                if (s1.value == s2.value + 1)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else // if bottom pile then stack alternate colours from king to ace
+        {
+            if (s1.value == s2.value - 1)
+            {
+                bool card1Red = true;
+                bool card2Red = true;
+
+                if (s1.suit == "c" || s1.suit == "s")
+                {
+                    card1Red = false;
+                }
+                if (s2.suit == "c" || s2.suit == "S")
+                {
+                    card2Red = false;
+                }
+                if (card1Red == card2Red)
+                {
+                    print("not stackable");
+                    return false;
+                }
+                else
+                {
+                    print("stackable");
+                    return true;
+                }
+            }
+        }
+        print("not stackable");
         return false;
     }
 }
