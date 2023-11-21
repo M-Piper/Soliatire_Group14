@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -61,10 +62,15 @@ public class playerInput : MonoBehaviour
     {
         print("clicked on Card");
 
-        //if card facedown and useable, flip
-
-        //if card is in deck pile with trips and not blocked, select it
-
+        //checks if card facedown
+        if (!selected.GetComponent<Selectable>().faceUp)
+        {
+            if (!Blocked(selected)) //checks if the facedown card is blocked or not
+            {
+                selected.GetComponent<Selectable>().faceUp = true;
+                slot1 = this.gameObject;
+            }
+        }
 
         if (slot1 == gameObject) //this prevents slot1 being null
         {
@@ -111,48 +117,54 @@ public class playerInput : MonoBehaviour
         Selectable s2 = selected.GetComponent<Selectable>();
         //compare to see if eligible for stacking
 
-        if (s2.top == true) //if top pile must be stacked Ace to King in same suit
-        {
-            if (s1.suit == s2.suit || s1.value == 1 && s2.suit == null)
-            {
-                if (s1.value == s2.value + 1)
-                {
-                    return true;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else // if bottom pile then stack alternate colours from king to ace
-        {
-            if (s1.value == s2.value - 1)
-            {
-                bool card1Red = true;
-                bool card2Red = true;
+        if (!s2.inDeckPile)
+        { //checks if the card potentially being moved is already in deck - this prevents it from being moved to the top
 
-                if (s1.suit == "c" || s1.suit == "s")
+            if (s2.top == true) //if top pile must be stacked Ace to King in same suit
+            {
+                if (s1.suit == s2.suit || s1.value == 1 && s2.suit == null)
                 {
-                    card1Red = false;
-                }
-                if (s2.suit == "c" || s2.suit == "S")
-                {
-                    card2Red = false;
-                }
-                if (card1Red == card2Red)
-                {
-                    print("not stackable");
-                    return false;
+                    if (s1.value == s2.value + 1)
+                    {
+                        return true;
+                    }
                 }
                 else
                 {
-                    print("stackable");
-                    return true;
+                    return false;
                 }
             }
-            print("not stackable");
-            return false;
+            else // if bottom pile then stack alternate colours from king to ace
+            {
+                if (s1.value == s2.value - 1)
+                {
+                    bool card1Red = true;
+                    bool card2Red = true;
+
+                    if (s1.suit == "c" || s1.suit == "s")
+                    {
+                        card1Red = false;
+                    }
+
+                    if (s2.suit == "c" || s2.suit == "S")
+                    {
+                        card2Red = false;
+                    }
+                    
+                    if (card1Red == card2Red)
+                    {
+                        print("not stackable");
+                        return false;
+                    }
+                    else
+                    {
+                        print("stackable"); //not in tutorial
+                        return true; //not in tutorial
+                    }
+                }
+                print("not stackable"); //not in tutorial
+                return false; //not in tutorial
+            }
         }
         print("not stackable");
         return false;
@@ -207,5 +219,33 @@ public class playerInput : MonoBehaviour
 
         slot1 = this.gameObject; //resets slot1 to null
 
+    }
+
+    bool Blocked(GameObject selected)
+    {
+        Selectable s2 = selected.GetComponent<Selectable>();
+        if (s2.inDeckPile == true)
+        {
+            if (s2.name == gamelogic.tripsOnDisplay.Last())
+            { 
+                return false;
+            }
+            else 
+            { 
+                print(s2.name + "is blocked by " + gamelogic.tripsOnDisplay.Last());
+                return true; 
+            }
+        }
+        else
+        {
+            if (s2.name == gamelogic.bottoms[s2.row].Last())
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

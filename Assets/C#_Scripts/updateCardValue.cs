@@ -52,9 +52,13 @@ public class updateCardValue : MonoBehaviour
       {
           if (name == userInput.slot1.name)
           {
-              spriteRenderer.color = Color.yellow;
-          }
-          else
+                //spriteRenderer.color = Color.yellow;
+                //spriteRenderer.color = new Color(0.5f, 0.2f, 0.8f, 1f); //purple
+                //spriteRenderer.color = new Color(1.0f, 0.5412f, 0.5412f, 1.0f); //dark pink
+                //spriteRenderer.color = new Color(1.0f, 0.667f, 0.4667f, 1f); //orange-pink
+                spriteRenderer.color = new Color(1.0f, 0.7176f, 0.7176f, 1f); //light-pink //the winner!!
+            }
+            else
           {
               spriteRenderer.color = Color.white;
           }
