@@ -151,6 +151,8 @@ public class playerInput : MonoBehaviour
                     return true;
                 }
             }
+            print("not stackable");
+            return false;
         }
         print("not stackable");
         return false;
