@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerInput : MonoBehaviour
@@ -85,9 +86,10 @@ public class playerInput : MonoBehaviour
           
             if (Stackable(selected))
             {
-                //Stack it
-                slot1 = selected;
+                Stack(selected);
             }
+            else
+            { slot1 = selected; }
             //else new card selected
             //else if the card is the same and time between clicks was X - send it to foundation
         }
@@ -152,5 +154,56 @@ public class playerInput : MonoBehaviour
         }
         print("not stackable");
         return false;
+    }
+
+    void Stack (GameObject selected)
+    {
+        //if selected card is on top of a kind or empty bottom stack the cards in the same place
+        //otherwise, stack the cards fanned out (on y axis)
+        Selectable s1 = slot1.GetComponent<Selectable>();
+        Selectable s2 = selected.GetComponent<Selectable>();
+        float yoffset = 0.3f;
+
+        if (s2.top || (!s2.top && s1.value == 13)) //if recent is at the top OR recent selection is NOT at the top BUT value of the location it is going is 13, then stay in place with no offset)
+        {
+            yoffset = 0;
+        }
+
+        slot1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - yoffset, selected.transform.position.z - 0.01f);
+        slot1.transform.parent = selected.transform; //moves whole column together
+
+        if (s1.inDeckPile) // subtracts cards that are now in top pile from the deck so they cannot be duplicated by mistake
+        {
+            gamelogic.tripsOnDisplay.Remove(slot1.name);
+        }
+        else if (s1.top && s2.top && s1.value == 1) //lets cards move between top spots
+        {
+           gamelogic.topTab[s1.row].GetComponent<Selectable>().value = 0;
+            gamelogic.topTab[s1.row].GetComponent<Selectable>().suit = null;
+        }
+        else if (s1.top) //tracks current value of top decks
+        {
+            gamelogic.topTab[s1.row].GetComponent<Selectable>().value = s1.value - 1;
+        }
+        else //remove card string from bottom list it was previously in
+        {
+            gamelogic.bottoms[s1.row].Remove(slot1.name);
+        }
+
+        s1.inDeckPile = false;
+        s1.row = s2.row;
+        if (s2.top)
+        {
+            gamelogic.topTab[s1.row].GetComponent<Selectable>().value = s1.value;
+            gamelogic.topTab[s1.row].GetComponent<Selectable>().suit = s1.suit;
+            s1.top = true;
+        }
+        else
+        {
+            s1.top = false;
+        }
+
+        slot1 = this.gameObject; //resets slot1 to null
+
     }
 }
