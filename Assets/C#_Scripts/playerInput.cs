@@ -67,10 +67,26 @@ public class playerInput : MonoBehaviour
         {
             if (!Blocked(selected)) //checks if the facedown card is blocked or not
             {
+                //flip card over
                 selected.GetComponent<Selectable>().faceUp = true;
                 slot1 = this.gameObject;
             }
         }
+
+        ///////////////////
+
+        else if (selected.GetComponent<Selectable>().inDeckPile) //if card clicked is in the deck pile with trips
+        {
+            //if it is not blocked
+            if (!Blocked(selected))
+            {
+                slot1 = selected;
+            }
+
+        }
+
+        ///////////////////////
+
 
         if (slot1 == gameObject) //this prevents slot1 being null
         {
