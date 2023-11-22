@@ -1205,7 +1205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -475, y: 225}
+  m_AnchoredPosition: {x: -380, y: 197}
   m_SizeDelta: {x: 55, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &883091473
@@ -1221,6 +1221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupPanel: {fileID: 1469899533}
+  factText: {fileID: 0}
 --- !u!114 &883091474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,6 +1492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d346556fda8e7674f9940d6587b425dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slot1: {fileID: 0}
+  firstCardFlag: 0
 --- !u!114 &1044476370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1504,6 +1507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theCardImages:
+  - {fileID: 21300000, guid: 06eead114f6717c4ca89272621979a3b, type: 3}
   - {fileID: 21300000, guid: 931a2def6ad31324f912b682020e6de2, type: 3}
   - {fileID: 21300000, guid: aa2bcfc5bd667464f8ac7702f9cb8dce, type: 3}
   - {fileID: 21300000, guid: 24aa0d42bc3370d42af52e8c82273e86, type: 3}
@@ -1516,7 +1520,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 753c2ad809fb45f49a4e439f014390b9, type: 3}
   - {fileID: 21300000, guid: 69cabda623c563f43a7e9f5aa72560e4, type: 3}
   - {fileID: 21300000, guid: 47251dd9f4413e64f9abeb32a4e4162b, type: 3}
-  - {fileID: 21300000, guid: 06eead114f6717c4ca89272621979a3b, type: 3}
+  - {fileID: 21300000, guid: 3b06c8753504b0346940242786ab3a73, type: 3}
   - {fileID: 21300000, guid: 6097410cce8e9af43a6567ca70602a63, type: 3}
   - {fileID: 21300000, guid: 8066f0c6d9dbd6945a071aa4234df96a, type: 3}
   - {fileID: 21300000, guid: 794bb490c4fd7464bb5e8d5f51b5cb1a, type: 3}
@@ -1529,20 +1533,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 46622162fbd41164aab6e64e88a85ffd, type: 3}
   - {fileID: 21300000, guid: 31a65a13fc0316a48bb43abeaea53253, type: 3}
   - {fileID: 21300000, guid: 8680c6459e06a554687dee6122492846, type: 3}
-  - {fileID: 21300000, guid: 3b06c8753504b0346940242786ab3a73, type: 3}
-  - {fileID: 21300000, guid: e0752ae11e91d094890a2e368eed7dbc, type: 3}
-  - {fileID: 21300000, guid: 00f33bc4f5050404c9ed5f311fcdf50a, type: 3}
-  - {fileID: 21300000, guid: 50b8d919f3f640c4f8dcaf3dd05cf4d5, type: 3}
-  - {fileID: 21300000, guid: e3a5d4081bc75414d9a40232480c0884, type: 3}
-  - {fileID: 21300000, guid: 748b10f3a5545bd4b90cfe48d06c4b50, type: 3}
-  - {fileID: 21300000, guid: 539a941d3b94dc24b9f23a95b8354b03, type: 3}
-  - {fileID: 21300000, guid: 2e91b03f36b1acf40a744c97f587bab3, type: 3}
-  - {fileID: 21300000, guid: fd341950add234e45a2560f052384d2c, type: 3}
-  - {fileID: 21300000, guid: 0ed591dc4c2d42f43b805b0756194577, type: 3}
-  - {fileID: 21300000, guid: e6984328bd97ca1469c379574b499f90, type: 3}
-  - {fileID: 21300000, guid: bf1d04b54894e6b41ad16edc3ae97ebb, type: 3}
-  - {fileID: 21300000, guid: 1a0e11f7c193e2845be1d8accf49982f, type: 3}
-  - {fileID: 21300000, guid: ae5c451a1a71c284bb4124c5acbe2f2b, type: 3}
+  - {fileID: 21300000, guid: 77dc9d5ccb0f2a042bc73dc9455d0301, type: 3}
   - {fileID: 21300000, guid: 250c95545c7193448a296eae3fb6ee26, type: 3}
   - {fileID: 21300000, guid: aff5b09064f9f3a488e869fb0068519b, type: 3}
   - {fileID: 21300000, guid: 71f4ddbbafa0cc045a1468e8bcba0296, type: 3}
@@ -1555,7 +1546,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ef636f7456995684f8ce25f547041eca, type: 3}
   - {fileID: 21300000, guid: edd74d487605d0742927c761e6052110, type: 3}
   - {fileID: 21300000, guid: 8cc4105ea6a9ec44fb36161c54e70096, type: 3}
-  - {fileID: 21300000, guid: 77dc9d5ccb0f2a042bc73dc9455d0301, type: 3}
+  - {fileID: 21300000, guid: ae5c451a1a71c284bb4124c5acbe2f2b, type: 3}
+  - {fileID: 21300000, guid: e0752ae11e91d094890a2e368eed7dbc, type: 3}
+  - {fileID: 21300000, guid: 00f33bc4f5050404c9ed5f311fcdf50a, type: 3}
+  - {fileID: 21300000, guid: 50b8d919f3f640c4f8dcaf3dd05cf4d5, type: 3}
+  - {fileID: 21300000, guid: e3a5d4081bc75414d9a40232480c0884, type: 3}
+  - {fileID: 21300000, guid: 748b10f3a5545bd4b90cfe48d06c4b50, type: 3}
+  - {fileID: 21300000, guid: 539a941d3b94dc24b9f23a95b8354b03, type: 3}
+  - {fileID: 21300000, guid: 2e91b03f36b1acf40a744c97f587bab3, type: 3}
+  - {fileID: 21300000, guid: fd341950add234e45a2560f052384d2c, type: 3}
+  - {fileID: 21300000, guid: 0ed591dc4c2d42f43b805b0756194577, type: 3}
+  - {fileID: 21300000, guid: e6984328bd97ca1469c379574b499f90, type: 3}
+  - {fileID: 21300000, guid: bf1d04b54894e6b41ad16edc3ae97ebb, type: 3}
+  - {fileID: 21300000, guid: 1a0e11f7c193e2845be1d8accf49982f, type: 3}
   cardPrefab: {fileID: 8853911021742462216, guid: 03f14c8b861fdc847bb8f487d89acd00, type: 3}
   deckButton: {fileID: 1135047639}
   bottomTab:
@@ -2332,7 +2335,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1471678681
 MonoBehaviour:
@@ -2365,7 +2368,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Testing Pop up fact panel!
 --- !u!222 &1471678682
