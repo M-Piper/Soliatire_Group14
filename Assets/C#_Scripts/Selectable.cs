@@ -37,41 +37,42 @@ public class Selectable : MonoBehaviour
             }
 
             char c = transform.name[0];
-            valueString = valueString + c.ToString();
+            char c2 = transform.name[1];
+            valueString = valueString + c.ToString() + c2.ToString();
             }
-            if (valueString == "a")
+            if (valueString == "ac")
             {
                 value = 1;
             }
-            if (valueString == "2")
+            if (valueString == "2_")
             {
                 value = 2;
             }
-            if (valueString == "3")
+            if (valueString == "3_")
             {
                 value = 3;
             }
-            if (valueString == "4")
+            if (valueString == "4_")
             {
                 value = 4;
             }
-            if (valueString == "5")
+            if (valueString == "5_")
             {
                 value = 5;
             }
-            if (valueString == "6")
+            if (valueString == "6_")
             {
                 value = 6;
             }
-            if (valueString == "7")
+            if (valueString == "7_")
             {
                 value = 7;
             }
-            if (valueString == "8")
+            if (valueString == "8_")
             {
                 value = 8;
             }
-            if (valueString == "9")
+            if (valueString == "9_")
             {
                 value = 9;
             }
@@ -79,15 +80,15 @@ public class Selectable : MonoBehaviour
             {
                 value = 10;
             }
-            if (valueString == "j")
+            if (valueString == "ja")
             {
                 value = 11;
             }
-            if (valueString == "q")
+            if (valueString == "qu")
             {
                 value = 12;
             }
-            if (valueString == "k")
+            if (valueString == "ki")
             {
                 value = 13;
             }

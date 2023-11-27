@@ -13,6 +13,7 @@ public class playerInput : MonoBehaviour
     void Start()
     {
         gamelogic = FindObjectOfType<gameLogic>();
+        gamelogic = FindObjectOfType<gameLogic>();
         slot1 = this.gameObject; //to prevent slot1 being null
         firstCardFlag = true;
     }
@@ -162,7 +163,7 @@ public class playerInput : MonoBehaviour
                         card1Red = false;
                     }
 
-                    if (s2.suit == "c" || s2.suit == "S")
+                    if (s2.suit == "c" || s2.suit == "s")
                     {
                         card2Red = false;
                     }
