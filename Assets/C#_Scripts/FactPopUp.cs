@@ -9,7 +9,12 @@ public class FactPopUp : MonoBehaviour
     public Text factText; // A reference to the text component on the popup panel
     private string[] facts; // An array of placeholder text string sentences
     private int index; // An index to keep track of the current fact
+    public AudioSource audio;
 
+    public void playButton()
+    {
+        audio.Play();
+    }
 
 
     private void Start()
@@ -24,17 +29,18 @@ public class FactPopUp : MonoBehaviour
         // Initialize the facts array with some dummy sentences
         facts = new string[]
         {
-            "Solitaire is also known as Patience in some countries, including the United Kingdom.",
-            "The game is often played with a standard deck of 52 playing cards.",
-            "Solitaire is a single-player game, making it a great way to pass the time alone.",
-            "There are many variations of Solitaire, with the most popular one being Klondike.",
+            
             "Microsoft Windows included Solitaire in their operating systems to help people learn how to use a computer mouse.",
+            "Playing cards have been around for over 1,000 years, with origins in ancient China.",
             "Solitaire can improve your concentration and problem-solving skills.",
             "The goal of Solitaire is to arrange all the cards in a specific order or suit.",
             "The game can be traced back to 18th-century France.",
             "Solitaire became popular in the United States during the 19th century.",
             "Some people believe that Napoleon Bonaparte played Solitaire during his exile on the island of Saint Helena.",
-            "Playing cards have been around for over 1,000 years, with origins in ancient China.",
+            "Solitaire is also known as Patience in some countries, including the United Kingdom.",
+            "The game is often played with a standard deck of 52 playing cards.",
+            "Solitaire is a single-player game, making it a great way to pass the time alone.",
+            "There are many variations of Solitaire, with the most popular one being Klondike.",
             "The first playing cards were likely made from materials like paper, wood, or bamboo.",
             "Playing cards were introduced to Europe in the late 14th century through trade with Asia.",
             "The four suits in a deck of cards (hearts, diamonds, clubs, and spades) are believed to represent the four seasons.",

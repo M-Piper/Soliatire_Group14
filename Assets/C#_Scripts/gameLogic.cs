@@ -13,6 +13,7 @@ public class gameLogic : MonoBehaviour
     public GameObject deckButton;
     public GameObject[] bottomTab;
     public GameObject[] topTab;
+    public AudioSource audioDeal;
 
     public static string[] fourSuits = new string[] { "clubs", "diamonds", "hearts", "spades" };
     public static string[] suitValues = new string[] { "ace_of_", "2_of_", "3_of_", "4_of_", "5_of_", "6_of_", "7_of_", "8_of_", "9_of_", "10_of_", "jack_of_", "queen_of_", "king_of_"};
@@ -49,9 +50,16 @@ public class gameLogic : MonoBehaviour
     }
 
     public void dealCards()
+            
     {
+        audioDeal.Play();
+
+        foreach (List<string> list in bottoms)
+        {
+            list.Clear();
+        }
         fulldeck = createDeck();
-        shuffle(fulldeck);
+       shuffle(fulldeck);
 
         //temp test displays cards in console
         foreach (string card in fulldeck)
@@ -222,8 +230,6 @@ public class gameLogic : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
-
-
 
         if (deckLocation < trips)
         {
