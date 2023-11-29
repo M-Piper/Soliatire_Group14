@@ -84,8 +84,6 @@ public class playerInput : MonoBehaviour
 
         }
 
-        ///////////////////////
-
         else
         { 
             if (slot1 == this.gameObject) //this prevents slot1 being null
