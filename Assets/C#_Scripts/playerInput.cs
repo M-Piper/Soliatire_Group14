@@ -13,9 +13,8 @@ public class playerInput : MonoBehaviour
     void Start()
     {
         gamelogic = FindObjectOfType<gameLogic>();
-        gamelogic = FindObjectOfType<gameLogic>();
         slot1 = this.gameObject; //to prevent slot1 being null
-        firstCardFlag = true;
+     //   firstCardFlag = true;
     }
 
     // Update is called once per frame
@@ -47,7 +46,7 @@ public class playerInput : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("Tableau"))
                 {
-                    Tableau();
+                    Tableau(hit.collider.gameObject);
 
                 }
             }
@@ -58,6 +57,7 @@ public class playerInput : MonoBehaviour
     {
         print("clicked on Deck");
         gamelogic.DealFromDeck();
+        slot1 = this.gameObject;
     }
     void Card(GameObject selected)
     {
@@ -74,8 +74,6 @@ public class playerInput : MonoBehaviour
             }
         }
 
-        ///////////////////
-
         else if (selected.GetComponent<Selectable>().inDeckPile) //if card clicked is in the deck pile with trips
         {
             //if it is not blocked
@@ -88,32 +86,29 @@ public class playerInput : MonoBehaviour
 
         ///////////////////////
 
-
-        if (slot1 == gameObject) //this prevents slot1 being null
-        {
-            //if (firstCardFlag = true)
-            //{
-                slot1 = selected;
-              //  firstCardFlag = false;
-            //}
-        //}
-        //else
-        //{
-          //  firstCardFlag = false;
-        }
-        
-        //if there is already a card selected and second card clicked is different
-
-        if (slot1 != selected)
-        {
-          
-            if (Stackable(selected))
+        else
+        { 
+            if (slot1 == this.gameObject) //this prevents slot1 being null
             {
-                Stack(selected);
+              slot1 = selected;
             }
-            else
-            { slot1 = selected; }
-            //else new card selected
+      
+
+            //if there is already a card selected and second card clicked is different
+
+            else if (slot1 != selected)
+            {
+
+                if (Stackable(selected))
+                {
+                    Stack(selected);
+                }
+                else
+                {
+                    //select new card
+                    slot1 = selected;
+                }
+            }
             //else if the card is the same and time between clicks was X - send it to foundation
         }
 
@@ -132,9 +127,17 @@ public class playerInput : MonoBehaviour
 
     }
 
-    void Tableau()
+    void Tableau(GameObject selected)
     {
         print("clicked on Tableau");
+
+        if (slot1.CompareTag("Card"))
+        {
+            if (slot1.GetComponent<Selectable>().value == 13)
+            {
+                Stack(selected);
+            }
+        }
     }
 
     bool Stackable(GameObject selected)
