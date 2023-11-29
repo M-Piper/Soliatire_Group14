@@ -223,8 +223,6 @@ public class gameLogic : MonoBehaviour
             }
         }
 
-
-
         if (deckLocation < trips)
         {
             // draw three cards from deck

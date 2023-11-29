@@ -8,18 +8,39 @@ public class playerInput : MonoBehaviour
 {
     private gameLogic gamelogic;
     public GameObject slot1;
-    public bool firstCardFlag;
+    private float timer;
+    private float doubleClickTimer = 0.3f;
+    private int clickCount = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
         gamelogic = FindObjectOfType<gameLogic>();
         slot1 = this.gameObject; //to prevent slot1 being null
-     //   firstCardFlag = true;
+                                 //   firstCardFlag = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //identifies if clicks were close together and therefore a double click
+        if (clickCount == 1)
+        {
+            timer += Time.deltaTime;
+        }
+        if (clickCount == 3)
+        {
+            timer = 0;
+            clickCount = 1;
+
+        }
+        if (timer > doubleClickTimer)
+        {
+            timer = 0;
+            clickCount = 0;
+        }
+
         GetMouseClick();
     }
 
@@ -27,6 +48,8 @@ public class playerInput : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            clickCount++;
+
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10));
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
@@ -79,18 +102,28 @@ public class playerInput : MonoBehaviour
             //if it is not blocked
             if (!Blocked(selected))
             {
-                slot1 = selected;
+                if (slot1 == selected) //if same card is clicked
+                {
+                    if (DoubleClick())
+                    {
+                        //attempt autostack
+                        AutoStack(selected);
+                    }
+                }
+                else
+                {
+                    slot1 = selected;
+                }
             }
-
         }
 
         else
-        { 
+        {
             if (slot1 == this.gameObject) //this prevents slot1 being null
             {
-              slot1 = selected;
+                slot1 = selected;
             }
-      
+
 
             //if there is already a card selected and second card clicked is different
 
@@ -107,7 +140,14 @@ public class playerInput : MonoBehaviour
                     slot1 = selected;
                 }
             }
-            //else if the card is the same and time between clicks was X - send it to foundation
+            if (slot1 == selected) //if same card is clicked
+            {
+                if (DoubleClick())
+                {
+                    //attempt autostack
+                    AutoStack(selected);
+                }
+            }
         }
 
     }
@@ -177,7 +217,7 @@ public class playerInput : MonoBehaviour
                     {
                         card2Red = false;
                     }
-                    
+
                     if (card1Red == card2Red)
                     {
                         print("not stackable");
@@ -197,7 +237,7 @@ public class playerInput : MonoBehaviour
         return false;
     }
 
-    void Stack (GameObject selected)
+    void Stack(GameObject selected)
     {
         //if selected card is on top of a kind or empty bottom stack the cards in the same place
         //otherwise, stack the cards fanned out (on y axis)
@@ -219,7 +259,7 @@ public class playerInput : MonoBehaviour
         }
         else if (s1.top && s2.top && s1.value == 1) //lets cards move between top spots
         {
-           gamelogic.topTab[s1.row].GetComponent<Selectable>().value = 0;
+            gamelogic.topTab[s1.row].GetComponent<Selectable>().value = 0;
             gamelogic.topTab[s1.row].GetComponent<Selectable>().suit = null;
         }
         else if (s1.top) //tracks current value of top decks
@@ -255,13 +295,13 @@ public class playerInput : MonoBehaviour
         if (s2.inDeckPile == true)
         {
             if (s2.name == gamelogic.tripsOnDisplay.Last())
-            { 
+            {
                 return false;
             }
-            else 
-            { 
+            else
+            {
                 print(s2.name + "is blocked by " + gamelogic.tripsOnDisplay.Last());
-                return true; 
+                return true;
             }
         }
         else
@@ -276,4 +316,104 @@ public class playerInput : MonoBehaviour
             }
         }
     }
+
+    bool DoubleClick()
+    {
+        if (timer < doubleClickTimer && clickCount == 2)
+        {
+            print("Double click");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    void AutoStack(GameObject selected)
+    {
+        for (int i = 0; i < gamelogic.topTab.Length; i++)
+        {
+            Selectable stack = gamelogic.topTab[i].GetComponent<Selectable>();
+            if (selected.GetComponent<Selectable>().value == 1) //if card is ace
+            {
+                if (gamelogic.topTab[i].GetComponent<Selectable>().value == 0)
+                {
+                    slot1 = selected;
+                    Stack(stack.gameObject); //stack the ace at top
+                    break;
+                }
+            }
+            else
+            {
+                if ((gamelogic.topTab[i].GetComponent<Selectable>().suit == slot1.GetComponent<Selectable>().suit && (gamelogic.topTab[i].GetComponent<Selectable>().value == slot1.GetComponent<Selectable>().value - 1)))
+                {
+                    if (HasNoChildren(slot1))
+                    {
+                        slot1 = selected;
+                        string lastCardname = "";
+                        string longSuit = "";
+
+                        if (stack.suit == "c")
+                        {
+                            longSuit = "_of_clubs";
+                            lastCardname = stack.value.ToString() + "_of_clubs";
+                        }
+                        if (stack.suit =="d")
+                        {
+                            longSuit = "_of_diamonds";
+                            lastCardname = stack.value.ToString() + "_of_diamonds";
+                        }
+                        if (stack.suit == "s")
+                        {
+                            longSuit = "_of_spades";
+                            lastCardname = stack.value.ToString() + "_of_spades";
+                        }
+                        if (stack.suit == "h")
+                        {
+                            longSuit = "_of_hearts";
+                            lastCardname = stack.value.ToString() + "_of_hearts";
+                        }
+                        if (stack.value == 1)
+                        {
+                            lastCardname = "ace_of_" + longSuit;
+                        }
+                        if (stack.value == 11)
+                        {
+                            lastCardname = "jack_of_" + longSuit;
+                        }
+                        if (stack.value == 12)
+                        {
+                            lastCardname = "queen_of_" + longSuit;
+                        }
+                        if (stack.value == 13)
+                        {
+                            lastCardname = "king_of_" + longSuit;
+                        }
+                        
+                        GameObject lastCard = GameObject.Find(lastCardname);
+                        Stack(lastCard);
+                        break;
+                        }
+                    }
+                }
+            }
+        }
+
+        bool HasNoChildren(GameObject card)
+        {
+            int i = 0;
+            foreach (Transform child in card.transform)
+            {
+                i++;
+            }
+            if (i == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 }
