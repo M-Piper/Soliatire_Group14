@@ -346,7 +346,7 @@ public class playerInput : MonoBehaviour
             }
             else
             {
-                if ((gamelogic.topTab[i].GetComponent<Selectable>().suit == slot1.GetComponent<Selectable>().suit && (gamelogic.topTab[i].GetComponent<Selectable>().value == slot1.GetComponent<Selectable>().value - 1)))
+                if ((gamelogic.topTab[i].GetComponent<Selectable>().suit == slot1.GetComponent<Selectable>().suit) && (gamelogic.topTab[i].GetComponent<Selectable>().value == slot1.GetComponent<Selectable>().value - 1))
                 {
                     if (HasNoChildren(slot1))
                     {
@@ -376,19 +376,19 @@ public class playerInput : MonoBehaviour
                         }
                         if (stack.value == 1)
                         {
-                            lastCardname = "ace_of_" + longSuit;
+                            lastCardname = "ace" + longSuit;
                         }
                         if (stack.value == 11)
                         {
-                            lastCardname = "jack_of_" + longSuit;
+                            lastCardname = "jack" + longSuit;
                         }
                         if (stack.value == 12)
                         {
-                            lastCardname = "queen_of_" + longSuit;
+                            lastCardname = "queen" + longSuit;
                         }
                         if (stack.value == 13)
                         {
-                            lastCardname = "king_of_" + longSuit;
+                            lastCardname = "king" + longSuit;
                         }
                         
                         GameObject lastCard = GameObject.Find(lastCardname);
