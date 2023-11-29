@@ -43,7 +43,7 @@ public class playerInput : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("Foundation"))
                 {
-                    Foundation();
+                    Foundation(hit.collider.gameObject);
                 }
                 else if (hit.collider.CompareTag("Tableau"))
                 {
@@ -118,9 +118,18 @@ public class playerInput : MonoBehaviour
         }
 
     }
-    void Foundation()
+    void Foundation(GameObject selected)
     {
         print("clicked on Foundation");
+        if (slot1.CompareTag("Card"))
+        {
+            //check if the card is an ace
+            if (slot1.GetComponent<Selectable>().value == 1)
+            {
+                Stack(selected);
+            }
+        }
+
     }
 
     void Tableau()
@@ -223,6 +232,7 @@ public class playerInput : MonoBehaviour
 
         s1.inDeckPile = false;
         s1.row = s2.row;
+
         if (s2.top)
         {
             gamelogic.topTab[s1.row].GetComponent<Selectable>().value = s1.value;

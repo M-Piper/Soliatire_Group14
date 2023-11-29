@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 119711326}
   - component: {fileID: 119711328}
   - component: {fileID: 119711327}
+  - component: {fileID: 119711329}
   m_Layer: 0
   m_Name: tableau0
   m_TagString: Tableau
@@ -152,7 +153,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -21.959997, y: -8.43, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2056872554}
@@ -198,7 +199,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -245,7 +246,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -281,6 +282,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &119711329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119711324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 0
+  suit: 
+  test: 
+  value: 0
+  row: 0
 --- !u!1 &134337353
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +345,7 @@ GameObject:
   - component: {fileID: 140685890}
   - component: {fileID: 140685892}
   - component: {fileID: 140685891}
+  - component: {fileID: 140685893}
   m_Layer: 0
   m_Name: tableau5
   m_TagString: Tableau
@@ -342,7 +363,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 11.37333, y: -8.43, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2056872554}
@@ -388,7 +409,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -435,7 +456,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -471,6 +492,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &140685893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140685888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 0
+  suit: 
+  test: 
+  value: 0
+  row: 5
 --- !u!1 &237789649
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +698,90 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &404692063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 404692065}
+  - component: {fileID: 404692064}
+  m_Layer: 0
+  m_Name: blank
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &404692064
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404692063}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 15, y: 19.86}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &404692065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404692063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.09, y: -5.34, z: 0}
+  m_LocalScale: {x: 0.11517048, y: 0.121711195, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +954,7 @@ GameObject:
   - component: {fileID: 691815735}
   - component: {fileID: 691815737}
   - component: {fileID: 691815736}
+  - component: {fileID: 691815738}
   m_Layer: 0
   m_Name: foundation3
   m_TagString: Foundation
@@ -847,7 +972,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 14, y: 2.25, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 863611555}
@@ -893,7 +1018,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -940,7 +1065,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -976,6 +1101,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &691815738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691815733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 1
+  suit: 
+  test: 
+  value: 0
+  row: 2
 --- !u!1 &791621177
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,6 +1132,7 @@ GameObject:
   - component: {fileID: 791621179}
   - component: {fileID: 791621181}
   - component: {fileID: 791621180}
+  - component: {fileID: 791621182}
   m_Layer: 0
   m_Name: foundation1
   m_TagString: Foundation
@@ -1005,7 +1150,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: 2.25, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 863611555}
@@ -1051,7 +1196,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1098,7 +1243,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1134,6 +1279,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &791621182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791621177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 1
+  suit: 
+  test: 
+  value: 0
+  row: 0
 --- !u!1 &863611554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,6 +1480,7 @@ GameObject:
   - component: {fileID: 904182817}
   - component: {fileID: 904182819}
   - component: {fileID: 904182818}
+  - component: {fileID: 904182820}
   m_Layer: 0
   m_Name: foundation4
   m_TagString: Foundation
@@ -1333,7 +1498,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 20, y: 2.25, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 863611555}
@@ -1379,7 +1544,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1426,7 +1591,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1462,6 +1627,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &904182820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904182815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 1
+  suit: 
+  test: 
+  value: 0
+  row: 3
 --- !u!1 &1044476368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,6 +1946,7 @@ GameObject:
   - component: {fileID: 1288330989}
   - component: {fileID: 1288330991}
   - component: {fileID: 1288330990}
+  - component: {fileID: 1288330992}
   m_Layer: 0
   m_Name: tableau3
   m_TagString: Tableau
@@ -1779,7 +1964,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.9600006, y: -8.43, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2056872554}
@@ -1825,7 +2010,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1872,7 +2057,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1908,6 +2093,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1288330992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288330987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 0
+  suit: 
+  test: 
+  value: 0
+  row: 3
 --- !u!1 &1367192078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,6 +2124,7 @@ GameObject:
   - component: {fileID: 1367192080}
   - component: {fileID: 1367192082}
   - component: {fileID: 1367192081}
+  - component: {fileID: 1367192083}
   m_Layer: 0
   m_Name: foundation2
   m_TagString: Foundation
@@ -1937,7 +2142,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8, y: 2.25, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 863611555}
@@ -1983,7 +2188,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2030,7 +2235,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2066,6 +2271,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1367192083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367192078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 1
+  suit: 
+  test: 
+  value: 0
+  row: 1
 --- !u!1 &1421738628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,6 +2302,7 @@ GameObject:
   - component: {fileID: 1421738630}
   - component: {fileID: 1421738632}
   - component: {fileID: 1421738631}
+  - component: {fileID: 1421738633}
   m_Layer: 0
   m_Name: tableau6
   m_TagString: Tableau
@@ -2095,7 +2320,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 18.039995, y: -8.43, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2056872554}
@@ -2141,7 +2366,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2188,7 +2413,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2224,6 +2449,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1421738633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421738628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 0
+  suit: 
+  test: 
+  value: 0
+  row: 6
 --- !u!1 &1469899533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2391,6 +2635,7 @@ GameObject:
   - component: {fileID: 1757732822}
   - component: {fileID: 1757732824}
   - component: {fileID: 1757732823}
+  - component: {fileID: 1757732825}
   m_Layer: 0
   m_Name: tableau2
   m_TagString: Tableau
@@ -2408,7 +2653,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8.626667, y: -8.43, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2056872554}
@@ -2454,7 +2699,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2501,7 +2746,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2537,6 +2782,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1757732825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757732820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 0
+  suit: 
+  test: 
+  value: 0
+  row: 2
 --- !u!1 &1965654078
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,6 +2813,7 @@ GameObject:
   - component: {fileID: 1965654080}
   - component: {fileID: 1965654082}
   - component: {fileID: 1965654081}
+  - component: {fileID: 1965654083}
   m_Layer: 0
   m_Name: tableau1
   m_TagString: Tableau
@@ -2566,7 +2831,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -15.293333, y: -8.43, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2056872554}
@@ -2612,7 +2877,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2659,7 +2924,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2695,6 +2960,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1965654083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965654078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 0
+  suit: 
+  test: 
+  value: 0
+  row: 1
 --- !u!1 &2056872553
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,6 +3029,7 @@ GameObject:
   - component: {fileID: 2104619272}
   - component: {fileID: 2104619274}
   - component: {fileID: 2104619273}
+  - component: {fileID: 2104619275}
   m_Layer: 0
   m_Name: tableau4
   m_TagString: Tableau
@@ -2762,7 +3047,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.706665, y: -8.43, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2056872554}
@@ -2808,7 +3093,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 74d202e02d743d248ab5baad18bb8247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 430e688ef401ef147a80fd2e7f95f830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2855,7 +3140,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15, y: 19.86}
+    oldSize: {x: 5.66, y: 7.5}
     newSize: {x: 5.01, y: 7.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2891,6 +3176,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2104619275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104619270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35852629f00ff404fbfe2a978fe4b7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceUp: 0
+  inDeckPile: 0
+  top: 0
+  suit: 
+  test: 
+  value: 0
+  row: 4
 --- !u!1001 &8970165462477252749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3064,3 +3368,4 @@ SceneRoots:
   - {fileID: 265674780}
   - {fileID: 237789653}
   - {fileID: 648378255}
+  - {fileID: 404692065}
