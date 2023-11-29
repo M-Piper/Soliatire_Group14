@@ -9,7 +9,12 @@ public class FactPopUp : MonoBehaviour
     public Text factText; // A reference to the text component on the popup panel
     private string[] facts; // An array of placeholder text string sentences
     private int index; // An index to keep track of the current fact
+    public AudioSource audio;
 
+    public void playButton()
+    {
+        audio.Play();
+    }
 
 
     private void Start()
